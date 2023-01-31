@@ -23,28 +23,30 @@ float calculateMoney(int age, float WMprice, int toyPrice)
     float total =0;
     float additionalMoney =0;
     float toyCost =0;
+    float odd=0;
     float result;
     for(int count= 1; count <=age; count = count +1)
     {
-        if(age %2 ==0)
+        if(count %2 ==0)
         {
-        count = count +1;
-        savings = savings +(count *5);
-        toyCost =(age/2) *toyPrice;
-        total = savings + toyCost;
+        savings = savings +(count *5.0);
         }
         else
         {
-        count = count +1;
-        savings = savings +(count*5);
-        toyCost =(age/2) *toyPrice;
-        total = savings + toyCost;
-       }
-    }
+            if(age%2!=0)
+            {
+                odd=(age/2)+1;
+                toyCost =odd*toyPrice;
+            }
+            else
+            {
+                toyCost=(age/2)*toyPrice;
+            }
+        }
+     }
+       total = savings +toyCost;
        total = total -(age/2);
-       cout << "toatl" << total << endl;
-       additionalMoney= abs(total - WMprice);
-   
+       additionalMoney= abs(total - WMprice); 
         if(total > WMprice)
         {
             cout << "Yes !Remaining amount is:" << additionalMoney << endl;
