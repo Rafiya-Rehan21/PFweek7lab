@@ -12,39 +12,35 @@ main()
     cout << "Enter year:";
     cin >> year;
     result= calculatePrice(money,year);
-    cout << result << endl;
 }
 float calculatePrice(float money, int year)
 {
-    int  modyear;
-    int age= 0;
     float spendings =0;
     float oddSpendings =0;
-    float total =0;
-    float remaining =0;
     float result=0;
-    modyear = year %10;
-    age = modyear +18;
-    for(int count =1; count <=modyear; count = count +1)
+    int age =18; 
+    for(int count =1800; count <=year; count = count +1)
     {
-        if(year %2 ==0)
+        if(count %2 ==0)
         {
-            count = count +1;
-            spendings = 12000.0 *count;
+            spendings = 12000.0 ;
+            money= money-spendings;
         }
-        oddSpendings= 12000.0 +(50 *age);
+        else
+        {
+             oddSpendings= (12000.0 +50 *age);
+             money =money -oddSpendings;
+        }
+        age =age+1;
     }
-        total = spendings + oddSpendings;
-        remaining =abs(money -total);
-        if(money > total)
+        if(money > 0)
         {
-            cout << "Yes ! He will live a care free life and will have" << remaining << endl;
+            cout << "Yes ! He will live a care free life and will have" << money << endl;
         }
-        if(money < total)
+        if(money < 0)
         {
-            cout << "No! The number of dollars he need to survive:" << remaining << endl;
+            cout << "No! The number of dollars he need to survive:" << abs(money) << endl;
         }
     return result;
-
 }
 
